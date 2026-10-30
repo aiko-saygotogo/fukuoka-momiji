@@ -92,6 +92,7 @@ details[open] summary::after{content:" 收合 ▴"}
 .acts{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
 .act{flex:1 1 auto;text-align:center;text-decoration:none;font-size:13px;font-weight:700;border-radius:10px;padding:9px 10px;border:1px solid var(--line);color:var(--ink);background:var(--chip)}
 .act.pass{background:var(--pass);color:#fff;border-color:transparent}
+.act.night{background:var(--night);color:#fff;border-color:transparent}
 .act.tour{background:var(--tour);color:#fff;border-color:transparent}
 .empty{color:var(--muted);text-align:center;padding:24px 0;font-size:14px}
 
@@ -203,6 +204,7 @@ function card(d){
   const acts=[`<a class="act" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(d.jp)}">📍 Google 地圖</a>`];
   if(isPass(d)) acts.push(`<a class="act pass" target="_blank" rel="noopener" href="${FP}">FunPASS 購買</a>`);
   if(isTour(d)) acts.push(`<a class="act tour" target="_blank" rel="noopener" href="${FT}">FunTOUR 預訂</a>`);
+  if((d.ev||"").includes("竹燈祭")) acts.push(`<a class="act night" target="_blank" rel="noopener" href="https://tw.trip.com/travel-guide/attraction/kitakyushu-city/kokura-castle-10354674/">🏮 竹燈祭購票</a>`);
   return `<article class="card">
     <div class="top"><div><h3>${esc(d.name)}</h3><div class="jp">${esc(d.jp)}</div></div></div>
     <div class="badges">${b.join("")}</div>
